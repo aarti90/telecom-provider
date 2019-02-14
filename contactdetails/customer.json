@@ -1,0 +1,32 @@
+{
+ "customer" : [
+ 	{
+ 		"customer_id" : "1",
+ 		"customer_name" : "Raj",
+ 		"Contacts" :[
+ 			{
+ 				"phone_number":"123456",
+ 				"active" : "true"
+ 			},
+ 			{
+ 				"phone_number":"564387",
+ 				"active" : "true"
+ 			} 			
+ 		]
+ 	},
+ 	{	
+ 		"customer_id" : "2",
+ 		"customer_name" : "Prerna",
+ 		"Contacts" :[
+ 			{
+ 				"phone_number":"989321",
+ 				"active" : "true"
+ 			},
+ 			{
+ 				"phone_number":"3499112",
+ 				"active" : "false"
+ 			} 			
+ 		]
+ 	}
+ ]
+}

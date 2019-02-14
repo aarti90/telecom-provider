@@ -1,0 +1,7 @@
+INDEX VERSION 1.3+C:\Users\rtkat_000\workspace\telecom-provider\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3598969982.index
+2225592341.index
+1036320577.index
+2559399732.index
+1027854681.index
+1059710469.index

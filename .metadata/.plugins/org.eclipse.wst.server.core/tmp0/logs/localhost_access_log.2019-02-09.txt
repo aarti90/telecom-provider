@@ -1,0 +1,13 @@
+127.0.0.1 - - [09/Feb/2019:22:40:04 +0530] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:22:47:43 +0530] "GET /contactdetails/ HTTP/1.1" 200 57
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:22:48:20 +0530] "GET /contactdetails/rest/telecom/allcontacts HTTP/1.1" 500 1081
+127.0.0.1 - - [09/Feb/2019:22:59:32 +0530] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:22:59:34 +0530] "GET /contactdetails/ HTTP/1.1" 200 57
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:23:00:53 +0530] "GET /contactdetails/rest/telecom/allcontacts HTTP/1.1" 500 1081
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:23:05:50 +0530] "GET /contactdetails/ HTTP/1.1" 200 57
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:23:06:14 +0530] "GET /contactdetails/rest/telecom/allcontacts HTTP/1.1" 500 1081
+127.0.0.1 - - [09/Feb/2019:23:08:08 +0530] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:23:08:09 +0530] "GET /contactdetails/ HTTP/1.1" 200 57
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:23:09:13 +0530] "GET /contactdetails/rest/telecom/allcontacts HTTP/1.1" 500 1081
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:23:13:00 +0530] "GET /contactdetails/ HTTP/1.1" 200 57
+0:0:0:0:0:0:0:1 - - [09/Feb/2019:23:14:27 +0530] "GET /contactdetails/rest/telecom/allcontacts HTTP/1.1" 500 1081

@@ -1,0 +1,5 @@
+package com.telecomprovider.rest;
+
+public class PhoneNumber {
+
+}

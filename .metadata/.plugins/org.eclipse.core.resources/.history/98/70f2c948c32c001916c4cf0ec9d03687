@@ -1,0 +1,29 @@
+package com.telecomprovider.rest;
+
+import java.util.List;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.GenericEntity;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import com.telecomprovider.jsonreader.CustomerJsonReader;
+
+@Path("/telecom")
+public class RestTelecomProvider {
+	
+	@Path("/allcontacts")
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON})
+	public Response getStartingPage()
+	{
+		List<String> phonenumbers = CustomerJsonReader.getAllPhoneNumbers();
+		/*String output = "<h1>Hello World!abc<h1>" +
+				"<p>RESTful Service is running ... <br>Ping @ " + new Date().toString() + "</p<br>";*/
+		GenericEntity<List<String>> entity = new GenericEntity<List<String>>(phonenumbers) {};
+		return Response.ok(entity).build();
+	}
+}
+

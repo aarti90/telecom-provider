@@ -1,0 +1,117 @@
+package com.telecomprovider.jsonreader;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+public class CustomerJsonReader {
+	
+	public static List<String> getAllPhoneNumbers(){
+		List<String> phoneNumber = new ArrayList<>();
+		JSONParser parser = new JSONParser();
+		
+		try(FileReader reader = new FileReader("customer.json")){
+			Object obj = parser.parse(reader);
+			JSONObject jsonObj = (JSONObject) obj;
+			JSONArray customerObj = (JSONArray) jsonObj.get("customer");
+			
+			for (int i = 0; i <customerObj.size(); i++) {
+				JSONObject jsonInnerObj = (JSONObject) customerObj.get(i);
+				JSONArray contact = (JSONArray) jsonInnerObj.get("Contacts");
+				for (int j = 0; j <contact.size(); j++) {
+					phoneNumber.add(((JSONObject) contact.get(j)).get("phone_number").toString());
+				}
+			}
+		} catch (IOException | ParseException e) {
+			System.out.println("Error in reading file "+e.getMessage());
+		}
+		return phoneNumber;
+	}
+	
+	public static List<String> getContactsByCustomer(String customerId){
+		List<String> phoneNumber = new ArrayList<>();
+		JSONParser parser = new JSONParser();
+		
+		try(FileReader reader = new FileReader("customer.json")){
+			Object obj = parser.parse(reader);
+			JSONObject jsonObj = (JSONObject) obj;
+			JSONArray customerObj = (JSONArray) jsonObj.get("customer");
+			
+			for (int i = 0; i <customerObj.size(); i++) {
+				JSONObject jsonInnerObj = (JSONObject) customerObj.get(i);
+				String custId = (String) jsonInnerObj.get("customer_id");
+				if(customerId != null && customerId.equals(custId))
+				{
+					JSONArray contact = (JSONArray) jsonInnerObj.get("Contacts");
+					for (int j = 0; j <contact.size(); j++) {
+						phoneNumber.add(((JSONObject) contact.get(j)).get("phone_number").toString());
+					}
+				}
+				try(FileWriter file = new FileWriter("customer.json", true)) {
+					 file.write(jsonInnerObj.toJSONString());
+				}
+			}
+			
+		} catch (IOException | ParseException e) {
+			System.out.println("Error in reading file "+e.getMessage());
+		}
+		return phoneNumber;
+	}
+	
+	public static void activateNumber(String phoneNo, String activateNo){
+		JSONParser parser = new JSONParser();
+		
+		try(FileReader reader = new FileReader("customer.json")){
+			Object obj = parser.parse(reader);
+			JSONObject jsonObj = (JSONObject) obj;
+			JSONArray customerObj = (JSONArray) jsonObj.get("customer");
+			
+			for (int i = 0; i <customerObj.size(); i++) {
+				JSONObject jsonInnerObj = (JSONObject) customerObj.get(i);
+				
+				JSONArray contact = (JSONArray) jsonInnerObj.get("Contacts");
+				for (int j = 0; j <contact.size(); j++) {
+					JSONObject contactObj = (JSONObject) contact.get(j);
+					String number  = contactObj.get("phone_number").toString();
+					if(phoneNo != null && phoneNo.equals(number)){
+						contactObj.put("active", activateNo);
+					}
+				}
+			}
+			
+			Writer writer = new FileWriter("customer.json",false);
+			writer.write("{"+"\"customer\" :"+customerObj.toJSONString()+"}");
+			writer.close();
+		} catch (IOException | ParseException e) {
+			System.out.println("Error in reading file "+e.getMessage());
+		}
+		//return phoneNumber;
+	}
+	
+	public static void main(String[] args){
+		/*System.out.println("Printing all phone numbers-------------------");
+		List<String> phoneNo = getAllPhoneNumbers();
+		for(String no : phoneNo){
+			System.out.println("      "+no);
+		}
+		
+		System.out.println("Printing phone number for Customer 2");
+		List<String> custPhNo = getContactsByCustomer("2");
+		for(String no : custPhNo){
+			System.out.println("      "+no);
+		}*/
+		
+		System.out.println("Activating phone 123456");
+		activateNumber("123456","true");
+		
+		
+	}
+}
